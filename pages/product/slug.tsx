@@ -3,6 +3,7 @@ import { Box } from '@mui/system'
 import React from 'react'
 import { ShopLayout } from '../../components/layouts'
 import { ProductSlidesShow } from '../../components/products'
+import { ItemCounter } from '../../components/ui'
 import { initialData } from '../../database/products'
 
 const product = initialData.products[0]
@@ -26,6 +27,7 @@ const ProductPage = () => {
             <Box sx={{ my: 2 }}>
               <Typography variant='subtitle2'>Cantidad</Typography>
               {/* ItemCounter */}
+              <ItemCounter />
             </Box>
             {/* Agregar al carrito */}
             <Button color='secondary' className='circular-btn'>
@@ -33,14 +35,14 @@ const ProductPage = () => {
             </Button>
             {/* <Chip label='No hay disponibles' color='error' variant='outlined' /> */}
             {/* Description */}
-            <Box sm={{ mt: 3 }}>
+            <Box sx={{ mt: 3 }}>
               <Typography variant='subtitle2'>Descripción</Typography>
               <Typography variant='body2'>{product.description}</Typography>
             </Box>
           </Box>
         </Grid>
       </Grid>
-    </ShopLayout>
+    </ShopLayout >
 
   )
 }
