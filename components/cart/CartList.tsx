@@ -51,8 +51,6 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                   </Button>
                 )
               }
-
-
             </Grid>
           </Grid>
         ))
