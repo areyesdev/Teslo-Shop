@@ -6,6 +6,8 @@ import { initialData } from '../database/products'
 import { ProductList } from '../components/products'
 import { useProducts } from '../hooks/useProducts'
 
+import { FullScreenLoading } from '../components/ui'
+
 const HomePage: NextPage = () => {
   const { products, isLoading } = useProducts('/products')
   return (
@@ -14,7 +16,7 @@ const HomePage: NextPage = () => {
       <Typography variant='h2' sx={{ mb: 1 }}>Todos los productos</Typography>
       {
         isLoading
-          ? <h1>Cargando...</h1>
+          ? <FullScreenLoading />
           : <ProductList products={products} />
       }
     </ShopLayout>
