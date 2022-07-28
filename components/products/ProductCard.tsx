@@ -23,7 +23,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}>
       <Card>
-        <NextLink href='/product/slug' passHref prefetch={false}>
+        <NextLink href={`/product/${product.slug}`} passHref prefetch={false}>
           <Link>
             <CardActionArea>
               <CardMedia component='img' className='fadeIn' image={productImage} alt={product.title} onLoad={() => setIsImageLoaded(true)} />
