@@ -1,3 +1,3 @@
 export const SHOP_CONSTANTS = {
-  validGenders: ['men', 'women', 'kids', 'unisex']
+  validGenders: ['men', 'women', 'kid', 'unisex']
 }
