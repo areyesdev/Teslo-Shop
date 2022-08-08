@@ -20,11 +20,11 @@ const SearchPage: NextPage<Props> = ({ products, foundProducts, query }) => {
       <Typography variant='h1' component='h1'>Buscar Productos</Typography>
       {
         foundProducts
-          ? <Typography variant='h2' sx={{ mb: 1 }}>Término: {query}</Typography>
+          ? <Typography variant='h2' sx={{ mb: 1 }} textTransform='capitalize'>Término: {query}</Typography>
           : (
             <Box display='flex'>
               <Typography variant='h2' sx={{ mb: 1 }}>No encontramos ningún producto</Typography>
-              <Typography variant='h2' sx={{ ml: 1 }} color='secondary'>{query}</Typography>
+              <Typography variant='h2' sx={{ ml: 1 }} color='secondary' textTransform='capitalize'>{query}</Typography>
             </Box>
           )
       }
