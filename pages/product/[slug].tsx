@@ -1,17 +1,37 @@
+import { useState } from 'react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import { Box, Button, Chip, Grid, Typography } from '@mui/material'
+
 import { ShopLayout } from '../../components/layouts'
 import { ProductSlidesShow, SizeSelector } from '../../components/products'
 import { ItemCounter } from '../../components/ui'
-import { IProduct } from '../../interfaces'
+
 import { dbProducts } from '../../database'
+import { ICartProduct, IProduct, ISize } from '../../interfaces'
 
 interface Props {
   product: IProduct
 }
 
 const ProductPage: NextPage<Props> = ({ product }) => {
+
+  const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
+    _id: product._id,
+    image: product.images[0],
+    price: product.price,
+    size: undefined,
+    slug: product.slug,
+    title: product.title,
+    gender: product.gender,
+    quantity: 1,
+  })
+  const selectedSize = (size: ISize) => {
+    setTempCartProduct(currentProduct => ({
+      ...currentProduct,
+      size
+    }));
+  }
   return (
     <ShopLayout title={product.title} pageDescription={product.description} >
       <Grid container spacing={3} >
@@ -31,14 +51,22 @@ const ProductPage: NextPage<Props> = ({ product }) => {
               <Typography variant='subtitle2'>Cantidad</Typography>
               {/* ItemCounter */}
               <ItemCounter />
-              <SizeSelector selectedSize={product.sizes[0]} sizes={product.sizes} />
+              <SizeSelector
+                sizes={product.sizes}
+                selectedSize={tempCartProduct.size}
+                onSelectedSize={selectedSize}
+              />
             </Box>
             {/* Agregar al carrito */}
             {
               (product.inStock > 0)
                 ? (
                   <Button color='secondary' className='circular-btn'>
-                    Agregar al carrito
+                    {
+                      tempCartProduct.size
+                        ? 'Agregar al carrito'
+                        : 'Seleccione una talla'
+                    }
                   </Button>
                 ) : (
                   <Chip label='No hay disponibles' color='error' variant='outlined' />
