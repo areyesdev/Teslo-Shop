@@ -12,7 +12,7 @@ export const uiReducer = ( state: UiState, action: UiActionType ): UiState => {
          return {
             ...state,
             isMenuOpen: !state.isMenuOpen
-          }
+        }
 
        default:
           return state;

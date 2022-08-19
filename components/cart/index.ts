@@ -1,2 +1,2 @@
-export *  from './CartList'
+export * from './CartList'
 export * from './OrderSummary'
