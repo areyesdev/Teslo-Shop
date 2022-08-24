@@ -1,6 +1,10 @@
 import { FC, useReducer } from 'react';
 import { UiContext, uiReducer } from './';
 
+
+type Props = {
+    children?: React.ReactNode
+};
 export interface UiState {
     isMenuOpen: boolean;
 }
@@ -11,9 +15,9 @@ const UI_INITIAL_STATE: UiState = {
 }
 
 
-export const UiProvider:FC = ({ children }) => {
+export const UiProvider: React.FC<Props> = ({ children }) => {
 
-    const [state, dispatch] = useReducer( uiReducer , UI_INITIAL_STATE );
+    const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE);
 
     const toggleSideMenu = () => {
         dispatch({ type: '[UI] - ToggleMenu' });
@@ -27,7 +31,7 @@ export const UiProvider:FC = ({ children }) => {
             // Methods
             toggleSideMenu,
         }}>
-            { children }
+            {children}
         </UiContext.Provider>
     )
 };
