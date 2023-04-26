@@ -22,3 +22,5 @@ Llamara:
 ```
 http://localhost:3000/api/seed
 ```
+
+## Andres Reyes
